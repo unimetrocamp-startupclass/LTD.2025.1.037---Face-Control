@@ -27,66 +27,69 @@
 
 ## 1. Introdução
 
-O cliente relatou que possui um depósito e não tem controle de entrada e saída, o que acaba ocasionando em perdas de materiais e consequentemente dinheiro. Sendo assim, a equipe decidiu desenvolver um sistema de controle facial para liberar apenas a entrada de pessoas autorizadas. Para o sistema de controle facial, utilizaremos OpenCV para acessar a câmera, capturar imagens e realizar processamento dessas imagens. A biblioteca Face Recognition será usada para registrar e comparar rostos através de representações numéricas. Para o armazenamento de dados, usaremos o banco de dados MongoDB para dados biométricos. No backend, Flask para criar APIs para integração e no frontend utilizaremos Tkinter ou PyQt para construir a interface.
+O cliente relatou que possui um depósito e não tem controle de entrada e saída, o que acaba ocasionando em perdas de materiais e consequentemente dinheiro. Sendo assim, a equipe decidiu desenvolver um sistema de controle de acesso utilizando uma ESP32-CAM com captura de imagem, e um backend Flask responsável pelo processamento e armazenamento das imagens.
+
+Neste novo modelo, ao pressionar um botão físico conectado à ESP32-CAM, a câmera captura uma imagem do usuário e envia para o servidor via HTTP. No backend, um endpoint Flask recebe essa imagem, salva localmente e prepara para o processamento posterior, como análise facial. O sistema visa, no futuro, realizar o reconhecimento facial com bibliotecas como Face Recognition, integradas ao backend Python.
+
+Para armazenamento, as imagens são salvas localmente no servidor por enquanto, mas há planos de utilizar um banco de dados adequado. A interface de administração e cadastro será implementada posteriormente.
 
 ---
 
 ## 2. Objetivo
 
-O projeto tem como objetivo principal desenvolver um sistema de controle de acesso por reconhecimento facial, destinado à empresa MOVE Soluções Corporativas, com foco em segurança e rastreabilidade. O sistema visa permitir a entrada e saída apenas de pessoas previamente cadastradas, a fim de minimizar perdas de materiais e aumentar o controle interno no depósito da empresa.
+O projeto tem como objetivo principal desenvolver um sistema de controle de acesso por imagem, com potencial para integração de reconhecimento facial, destinado à empresa MOVE Soluções Corporativas. O sistema visa permitir a entrada e saída apenas de pessoas previamente cadastradas, a fim de minimizar perdas de materiais e aumentar o controle interno no depósito da empresa.
 
-Por meio do uso de tecnologias como OpenCV e a biblioteca Face Recognition, será possível realizar a detecção e identificação facial dos usuários. O backend será desenvolvido com Flask, responsável por intermediar a comunicação entre os dados faciais e o banco de dados MongoDB, enquanto a interface gráfica será construída com Tkinter ou PyQt, visando praticidade e usabilidade.
+O fluxo principal consiste na captura de imagem pela ESP32-CAM quando o botão é pressionado, envio para um servidor Flask via rede Wi-Fi, salvamento da imagem no backend e futura verificação por algoritmos de reconhecimento facial. A solução foca na automação acessível, com uso de hardware de baixo custo e software customizável.
 
 ---
 
 ## 3. Escopo
 
-O sistema será composto por um aplicativo desktop com funcionalidades voltadas ao controle de acesso por reconhecimento facial em ambientes físicos. Os principais requisitos que serão implementados incluem:
+O sistema será composto por:
 
-1. **Cadastro de Usuários Autorizados**  
-   A aplicação permitirá o cadastro de pessoas autorizadas a acessar o depósito, incluindo nome, CPF e captura da imagem facial para posterior reconhecimento.
+* Um microcontrolador ESP32-CAM com câmera OV2640, que realiza a captura da imagem ao pressionar de um botão físico e envia via HTTP para o backend.
+* Um backend Flask com um endpoint (`/upload-image`) que recebe a imagem enviada, salva em disco com timestamp, e prepara para futura análise.
 
-2. **Reconhecimento Facial para Controle de Acesso**  
-   O sistema realizará a verificação facial em tempo real utilizando a webcam do dispositivo. Caso o rosto seja reconhecido como autorizado, o acesso será liberado; caso contrário, o evento será registrado como tentativa de acesso não autorizada.
+Os principais requisitos que serão implementados incluem:
 
-3. **Registro de Entradas e Saídas**  
-   Cada evento de entrada e saída será registrado automaticamente, gerando um log com informações como data, hora e identidade da pessoa reconhecida, permitindo ao cliente acompanhar a movimentação no local.
+1. **Captura de Imagem via ESP32-CAM**
+   Ao pressionar um botão físico, a ESP32-CAM captura uma imagem do ambiente ou do usuário e envia para o servidor via rede Wi-Fi.
 
-4. **Interface Administrativa**  
-   A aplicação contará com uma interface administrativa acessível apenas a usuários autorizados, onde será possível gerenciar cadastros, consultar registros de acesso e remover usuários do sistema.
+2. **Recebimento e Armazenamento da Imagem**
+   O backend desenvolvido com Flask salva a imagem com segurança usando a biblioteca `werkzeug`, armazenando com timestamp.
 
-**Limites da Implementação**  
-- O sistema será executado localmente, sem funcionalidades de acesso remoto via navegador ou aplicativo mobile.  
-- Não haverá integração com catracas, portões eletrônicos ou outros dispositivos físicos de controle. A liberação será simbólica ou indicada por mensagens visuais/sonoras.  
-- Nesta versão, o reconhecimento será feito apenas por câmera frontal de computadores, sem suporte para múltiplas câmeras ou câmeras IP.
+3. **Registro de Acesso com Imagem**
+   Cada imagem recebida será registrada em uma pasta no servidor com nome de arquivo baseado em data e hora, permitindo rastreamento de acessos.
+
+4. **Infraestrutura Flexível para Reconhecimento Facial**
+   O sistema será preparado para, futuramente, integrar bibliotecas como OpenCV e Face Recognition, para realizar a autenticação facial automática.
+
+**Limites da Implementação**
+
+* O reconhecimento facial ainda não está implementado nesta versão; atualmente, o sistema captura e armazena imagens apenas.
+* A ESP32-CAM exige rede Wi-Fi 2.4GHz para funcionamento.
+* O sistema depende de um servidor local ou em rede para o recebimento e salvamento das imagens.
 
 ---
 
 ## 4. Backlogs do Produto
 
-Principais requisitos definidos com base nas necessidades do cliente e nas discussões realizadas com a equipe de desenvolvimento:
+1. **Captura e Envio de Imagem pela ESP32-CAM**
+   Programar a ESP32-CAM para capturar imagem ao pressionar um botão e enviar via HTTP POST para o endpoint Flask.
 
-1. **Cadastro de Usuários Autorizados**  
-   O administrador poderá adicionar novas pessoas autorizadas ao sistema, informando dados como nome, CPF e imagem facial capturada via webcam.
+2. **Criação do Endpoint no Backend Flask**
+   Desenvolver o endpoint `/upload-image` que recebe arquivos de imagem, aplica nome seguro e timestamp, e armazena em diretório específico.
 
-2. **Reconhecimento Facial em Tempo Real**  
-   O sistema utilizará a câmera do dispositivo para capturar imagens e comparar com os rostos cadastrados, liberando ou negando o acesso com base na correspondência.
+3. **Organização e Armazenamento Local de Imagens**
+   Implementar salvamento organizado em uma pasta `uploads/`, mantendo controle cronológico dos acessos.
 
-3. **Registro de Eventos de Acesso**  
-   Toda tentativa de entrada ou saída será registrada com data, hora e resultado (autorizado ou não autorizado), permitindo rastreamento completo das movimentações.
+4. **Documentação do Sistema e Configuração de Rede**
+   Detalhar como configurar o nome e senha da rede Wi-Fi, botão na protoboard e upload do código `.ino` para a ESP32-CAM.
 
-4. **Interface Administrativa com Controle de Acesso**  
-   Apenas administradores terão acesso ao painel administrativo, onde poderão gerenciar usuários autorizados e consultar os logs de entrada/saída.
+5. **Preparação para Reconhecimento Facial**
+   Garantir que as imagens capturadas tenham qualidade suficiente para uso futuro com Face Recognition.
 
-5. **Gerenciamento de Cadastro Facial**  
-   A aplicação permitirá a atualização ou remoção de usuários cadastrados, bem como a recaptura da imagem facial, caso necessário.
+6. **Autenticação e Interface de Administração (futuro)**
+   Será desenvolvida interface para visualização de imagens capturadas, cadastro de usuários e, eventualmente, reconhecimento facial com autorização de entrada.
 
-6. **Sistema de Autenticação**  
-   O sistema contará com autenticação para o acesso ao painel administrativo, garantindo que apenas usuários autorizados possam modificar os dados do sistema.
-
-7. **Interface Simples e Intuitiva**  
-   A interface será desenvolvida com foco em usabilidade, utilizando Tkinter ou PyQt, permitindo fácil utilização mesmo por pessoas com pouca familiaridade com tecnologia.
-
-Esses são os requisitos iniciais definidos para o projeto. Novas funcionalidades poderão ser consideradas e adicionadas ao longo do desenvolvimento, conforme necessidade do cliente e viabilidade técnica.
-
-    
+Esses requisitos compõem a versão atual do projeto, com possibilidade de evolução para integração de reconhecimento facial e interface gráfica completa no futuro.
