@@ -1,0 +1,36 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Lucas Ryan",
+       "tipo": "Funcionario",
+      "status": "entrada",
+      "timestamp": "2024-06-05T08:23:00",
+      "imagem": "lucas_ryan.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "Eduardo",
+      "tipo": "Adm",
+      "status": "saida",
+      "timestamp": "2024-06-05T17:10:45",
+      "imagem": "eduardo.jpg"
+    },
+    {
+      "id": 3,
+      "nome": "Lucas G",
+      "tipo": "Funcionario",
+      "status": "entrada",
+      "timestamp": "2024-06-05T08:27:13",
+      "imagem": "lucas_g.jpg"
+    },
+    {
+      "id": 4,
+      "nome": "Gustavo Freschi",
+      "tipo": "Visitante",
+      "status": "saida",
+      "timestamp": "2024-06-05T18:00:00",
+      "imagem": "gustavo_freschi.jpg"
+    }
+  ]
+}
