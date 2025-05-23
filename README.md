@@ -89,6 +89,44 @@ Os principais requisitos que serão implementados incluem:
 5. **Preparação para Reconhecimento Facial**
    Garantir que as imagens capturadas tenham qualidade suficiente para uso futuro com Face Recognition.
 
+---
+
+6. **Autenticação e Interface de Administração (futuro)**
+   Será desenvolvida interface para visualização de imagens capturadas, cadastro de usuários e, eventualmente, reconhecimento facial com autorização de entrada.
+
+Esses requisitos compõem a versão atual do projeto, com possibilidade de evolução para integração de reconhecimento facial e interface gráfica completa no futuro.
+
+---
+
+## ⚙️ Tecnologias Utilizadas
+
+- **Python** xxxx
+- **X** Backend com as funcionalidades de formulários e requisições ao banco de dados.
+- **X** Banco de dados.
+
+---
+
+## 🗓️ Cronograma (Sprint)
+
+| Fase              | Início     | Término    |
+|-------------------|------------|------------|
+| Sprint 1          | [xx/xx]    |  [xx/xx]   |
+| Sprint 2          | [xx/xx]    |  [xx/xx]   |
+| Sprint 3          | [xx/xx]    |  [xx/xx]   |
+| Sprint 4          | [xx/xx]    |  [xx/xx]   |
+| Sprint 5          | [xx/xx]    |  [xx/xx]   |
+| Desenvolvimento   | [xx/xx]    |  [xx/xx]   |
+
+> _Datas devem ser preenchidas conforme planejamento no Jira._
+
+---
+
+## 📢 Divulgação
+
+- **Repositório na Organization GitHub:** [\[inserir link\]](https://github.com/unimetrocamp-startupclass/LTD.2025.1.037---Face-Control/edit/main)
+
+---
+
 6. **Autenticação e Interface de Administração (futuro)**
    Será desenvolvida interface para visualização de imagens capturadas, cadastro de usuários e, eventualmente, reconhecimento facial com autorização de entrada.
 
