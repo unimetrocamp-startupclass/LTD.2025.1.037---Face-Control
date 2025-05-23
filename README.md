@@ -89,8 +89,6 @@ Os principais requisitos que serão implementados incluem:
 5. **Preparação para Reconhecimento Facial**
    Garantir que as imagens capturadas tenham qualidade suficiente para uso futuro com Face Recognition.
 
----
-
 6. **Autenticação e Interface de Administração (futuro)**
    Será desenvolvida interface para visualização de imagens capturadas, cadastro de usuários e, eventualmente, reconhecimento facial com autorização de entrada.
 
@@ -110,12 +108,12 @@ Esses requisitos compõem a versão atual do projeto, com possibilidade de evolu
 
 | Fase              | Início     | Término    |
 |-------------------|------------|------------|
-| Sprint 1          | [xx/xx]    |  [xx/xx]   |
-| Sprint 2          | [xx/xx]    |  [xx/xx]   |
-| Sprint 3          | [xx/xx]    |  [xx/xx]   |
-| Sprint 4          | [xx/xx]    |  [xx/xx]   |
-| Sprint 5          | [xx/xx]    |  [xx/xx]   |
-| Desenvolvimento   | [xx/xx]    |  [xx/xx]   |
+| Sprint 1          | [28/02]    |  [14/03]   |
+| Sprint 2          | [21/03]    |  [04/04]   |
+| Sprint 3          | [11/04]    |  [02/05]   |
+| Sprint 4          | [02/05]    |  [16/05]   |
+| Sprint 5          | [23/05]    |  [27/06]   |
+| Desenvolvimento   | [28/02]    |  [27/06]   |
 
 > _Datas devem ser preenchidas conforme planejamento no Jira._
 
@@ -127,7 +125,3 @@ Esses requisitos compõem a versão atual do projeto, com possibilidade de evolu
 
 ---
 
-6. **Autenticação e Interface de Administração (futuro)**
-   Será desenvolvida interface para visualização de imagens capturadas, cadastro de usuários e, eventualmente, reconhecimento facial com autorização de entrada.
-
-Esses requisitos compõem a versão atual do projeto, com possibilidade de evolução para integração de reconhecimento facial e interface gráfica completa no futuro.
