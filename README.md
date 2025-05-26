@@ -96,15 +96,7 @@ Esses requisitos compõem a versão atual do projeto, com possibilidade de evolu
 
 ---
 
-## ⚙️ Tecnologias Utilizadas
-
-- **Python** xxxx
-- **X** Backend com as funcionalidades de formulários e requisições ao banco de dados.
-- **X** Banco de dados.
-
----
-
-## 🗓️ Cronograma (Sprint)
+## 5. Cronograma (Sprints)
 
 | Fase              | Início     | Término    |
 |-------------------|------------|------------|
@@ -116,6 +108,14 @@ Esses requisitos compõem a versão atual do projeto, com possibilidade de evolu
 | Desenvolvimento   | [28/02]    |  [27/06]   |
 
 > _Datas devem ser preenchidas conforme planejamento no Jira._
+
+---
+
+## ⚙️ Tecnologias Utilizadas
+
+- **Python** xxxx
+- **X** Backend com as funcionalidades de formulários e requisições ao banco de dados.
+- **X** Banco de dados.
 
 ---
 
